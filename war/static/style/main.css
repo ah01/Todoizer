@@ -1,0 +1,13 @@
+body{
+    font-size: 90%;
+    font-family: Corbel, Verdana, 'Geneva CE', lucida, sans-serif;
+    margin: 10px;
+    text-align: center;
+}
+
+#frame{
+    margin: 0 auto;
+    max-width: 600px;
+    _width: 600px;
+    text-align: left;
+}
