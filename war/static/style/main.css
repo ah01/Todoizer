@@ -11,3 +11,27 @@ body{
     _width: 600px;
     text-align: left;
 }
+
+
+#tasks{
+	border-top: solid #aaa 1px;
+    }
+    
+    #tasks .task{
+        padding: 3px;
+    	border-bottom: solid #aaa 1px;
+    }
+    
+    #tasks .task:hover{
+        background-color: #eee;
+    }
+    
+    #tasks .task label{
+    }
+    
+    #tasks .task .labels{
+        font-family: verdana;
+        font-size: 60%;
+        color: blue;
+    }
+

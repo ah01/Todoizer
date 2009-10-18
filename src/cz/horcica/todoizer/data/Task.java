@@ -1,12 +1,12 @@
 package cz.horcica.todoizer.data;
 
+import java.util.Set;
+
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
-
-import com.google.appengine.api.users.User;
 
 /**
  * Task DTO
@@ -30,6 +30,9 @@ public class Task {
 
     @Persistent
     private String ownerId;
+    
+    @Persistent
+    private Set<String> labels;
     
     public Long getId() {
 		return id;
@@ -64,6 +67,14 @@ public class Task {
 
 	public void setOwnerId(String ownerId) {
 		this.ownerId = ownerId;
+	}
+
+	public Set<String> getLabels() {
+		return labels;
+	}
+
+	public void setLabels(Set<String> labels) {
+		this.labels = labels;
 	}
 
 }

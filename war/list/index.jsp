@@ -30,17 +30,27 @@
 	        <form action="save" method="get">
 	            <label>Nový úkol:</label>
 	            <input type="text" name="name">
+	            <input type="text" name="labels">
 	            <input type="submit" title="OK">
 	        </form>
 	        
-	        <hr>
 	        
+	        <div id="tasks">
 	        <% for(Task task : tasks.getTasks()){ %>
-                <div>
+                <div class="task">
                     <input type="checkbox" id="task<%= task.getId() %>"></iput>
-                    <label for="task<%= task.getId() %>"><%= task.getName() %></label>
+                    
+	                    <span class="labels">
+	                        <% if(task.getLabels() != null) for(String label : task.getLabels()){ %>
+	                        <span><%= label %></span>
+	                        <% } %>
+	                    </span>
+	                <label for="task<%= task.getId() %>">
+	                    <%= task.getName() %>
+                    </label>
                 </div>
 	        <% } %>
+	        </div>
         
         </div>
         
