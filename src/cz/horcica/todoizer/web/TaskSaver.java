@@ -23,22 +23,14 @@ public class TaskSaver extends HttpServlet {
 		String name = req.getParameter("name");
 		String labels = req.getParameter("labels");
 		
-		if(labels == null) labels = "";
-		
-		String[] labelsArray = labels.trim().split(",");
-		List<String> l = new ArrayList<String>();
-		for (String string : labelsArray) {
-			String s = string.trim();
-			if(!s.isEmpty()){
-				l.add(s.replace(" ", "_"));
+		if(name != null){
+			name = name.trim();
+			if(!name.isEmpty()){
+				TaskRepository repository = new TaskRepository();
+				repository.addTaskWithLabels(name, labels);
+				repository.close();
 			}
 		}
-		
-		Set<String> s = new TreeSet<String>(l);
-		
-		TaskRepository repository = new TaskRepository();
-		repository.addTask(name, s);
-		repository.close();
 		
 		resp.sendRedirect("/list");
 	}

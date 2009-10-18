@@ -1,7 +1,9 @@
 package cz.horcica.todoizer.logic;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
@@ -31,12 +33,30 @@ public class TaskRepository {
 		return result;
 	}
 	
+	public void addTaskWithLabels(String name, String labels){
+		Set<String> labelsSet = null;
+		
+		if(labels != null){
+			String[] labelsArray = labels.trim().split(",");
+			List<String> l = new ArrayList<String>();
+			for (String string : labelsArray) {
+				String s = string.trim();
+				if(!s.isEmpty()){
+					l.add(s.replace(" ", "_"));
+				}
+			}
+			
+			labelsSet = new TreeSet<String>(l);
+		}
+		
+		addTask(name, labelsSet);
+	}
+	
 	public void addTask(String name){
 		addTask(name, null);
 	}
 	
 	public void addTask(String name, Set<String> labels){
-		
 		Task task = new Task();
 		
 		task.setOwnerId(SecurityHelper.getUser().getUserId());

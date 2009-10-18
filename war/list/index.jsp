@@ -39,15 +39,17 @@
 	        <% for(Task task : tasks.getTasks()){ %>
                 <div class="task">
                     <input type="checkbox" id="task<%= task.getId() %>"></iput>
-                    
-	                    <span class="labels">
-	                        <% if(task.getLabels() != null) for(String label : task.getLabels()){ %>
-	                        <span><%= label %></span>
-	                        <% } %>
-	                    </span>
+                    <span class="labels">
+                        <% if(task.getLabels() != null) for(String label : task.getLabels()){ %>
+                        <span><%= label %></span>
+                        <% } %>
+                    </span>
 	                <label for="task<%= task.getId() %>">
 	                    <%= task.getName() %>
                     </label>
+                    <span class="tools">
+                        <a href="/list/delete?id=<%= task.getId() %>">smazat</a>
+                    </span>
                 </div>
 	        <% } %>
 	        </div>
