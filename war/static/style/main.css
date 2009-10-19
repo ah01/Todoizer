@@ -7,24 +7,43 @@ body{
 
 #frame{
     margin: 0 auto;
-    max-width: 600px;
-    _width: 600px;
+    max-width: 800px;
+    _width: 800px;
     text-align: left;
 }
 
 
+#new-task{
+    border-top: solid #aaa 1px;
+	padding: 4px;
+    }
+    
 #tasks{
 	border-top: solid #aaa 1px;
     }
     
     #tasks .task{
         position: relative;
-        padding: 3px;
+        padding: 6px 20px 6px 3px;
     	border-bottom: solid #aaa 1px;
     }
     
+    #tasks .info{
+        text-align: center;
+        padding: 10px;
+        font-style: italic;
+        border-bottom: solid #aaa 1px;
+    }
+    
+    #tasks .filtered{
+        text-align: center;
+        padding: 6px;
+        background-color: #fff7ad;
+        border-bottom: solid #aaa 1px;
+    }
+    
     #tasks .task:hover{
-        background-color: #eee;
+        background-color: #A2C9E8;
         }
         
         #tasks .task:hover .tools{
@@ -32,6 +51,8 @@ body{
         }
     
     #tasks .task label{
+        font-size: 110%;
+        padding-left: 5px;
     }
     
     #tasks .task .labels{
@@ -43,21 +64,19 @@ body{
     #tasks .task .tools{
         position: absolute;
         display: block;
-        padding: 3px 3px;
-        top: 0;
-        right: 0;
+        padding: 2px 3px;
+        top: 7px;
+        right: 4px;
         font-size: 70%;
         font-family: verdana;
         color:#666;
         background-color: #fff;
         z-index: 1;
         visibility: hidden;
-        border-bottom: solid #aaa 1px;
-        border-left: solid #aaa 1px;
         }
         
         .tools a{
-            color: red;
+            color: #A3222E;
             font-weight: bold;
             text-decoration: none;
         }

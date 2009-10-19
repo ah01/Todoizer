@@ -26,10 +26,19 @@ public class TaskRepository {
 	}
 	
 	public List<Task> getTasks(){
+		return getTasks(null);
+	}
+	
+	public List<Task> getTasks(String label){
 		List<Task> result = null;
 		Query q = pm.newQuery(TASKS_QUERY);
 		
-		q.setFilter("ownerId == '" + SecurityHelper.getUser().getUserId() + "'");
+		
+		if(label == null){
+			q.setFilter("ownerId == '" + SecurityHelper.getUser().getUserId() + "'");
+		}else{
+			q.setFilter("ownerId == '" + SecurityHelper.getUser().getUserId() + "' && labels == '" + label + "'");
+		}
 		
 		result = (List<Task>) q.execute();
 		return result;

@@ -18,7 +18,7 @@ import cz.horcica.todoizer.logic.TaskRepository;
 
 @SuppressWarnings("serial")
 public class TaskSaver extends HttpServlet {
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		
 		String name = req.getParameter("name");
 		String labels = req.getParameter("labels");
