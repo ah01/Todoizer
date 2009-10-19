@@ -48,7 +48,7 @@
 	                    <%= task.getName() %>
                     </label>
                     <span class="tools">
-                        <a href="/list/delete?id=<%= task.getId() %>">smazat</a>
+                        <a href="/list/delete?id=<%= task.getId() %>">&times;</a>
                     </span>
                 </div>
 	        <% } %>

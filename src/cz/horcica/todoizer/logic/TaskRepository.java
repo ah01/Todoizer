@@ -1,10 +1,12 @@
 package cz.horcica.todoizer.logic;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
@@ -70,8 +72,34 @@ public class TaskRepository {
 		pm.makePersistent(task);
 	}
 	
+	public Task getTaskById(Long id){
+		Task result;
+		try{
+			result = pm.getObjectById(Task.class, id);
+		}catch(JDOObjectNotFoundException e){
+			result = null;
+		}
+		return result;
+	}
+	
+	public boolean deleteTaskById(Long id){
+		Task task = getTaskById(id);
+		
+		if(task != null){
+			
+			if(!task.getOwnerId().equals(SecurityHelper.getUser().getUserId())){
+				throw new SecurityException("You can not delete this task");
+			}
+			
+			pm.deletePersistent(task);
+			return true;
+			
+		} else {
+			return false;
+		}
+	}
+	
 	public void close(){
 		if(pm != null) pm.close();
 	}
-	
 }
