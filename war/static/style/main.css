@@ -1,7 +1,7 @@
 body{
     font-size: 85%;
     font-family: Tahoma, 'Lucida Grande CE', lucida, sans-serif;
-    margin: 0;
+    margin: 0 10px;
     text-align: center;
     background-color: #fcfcfc;
     background-image: url(bg.png);
@@ -11,7 +11,7 @@ body{
 
 #frame{
 	position: relative;
-    margin: 0 auto;
+    margin: 0px auto;
     max-width: 750px;
     _width: 800px;
     text-align: left;

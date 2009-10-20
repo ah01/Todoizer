@@ -14,7 +14,7 @@ import cz.horcica.todoizer.data.PMF;
 import cz.horcica.todoizer.data.Task;
 
 /**
- * 
+ * Handle working with tasks
  * 
  * @author Adam Horcica
  */
@@ -24,29 +24,60 @@ public class TaskRepository {
 	
 	private PersistenceManager pm;
 	
+	/**
+	 * UserId of tasks owner
+	 */
+	private String userId;
+	
+	
 	public TaskRepository(){
-		pm = PMF.getPM();
+		this(SecurityHelper.getUser().getUserId());
 	}
 	
+	
+	public TaskRepository(String userId){
+		pm = PMF.getPM();
+		this.userId = userId;
+	}
+	
+	
+	/**
+	 * Return all tasks of user
+	 * 
+	 * @return tasks
+	 */
 	public List<Task> getTasks(){
 		return getTasks(null);
 	}
 	
+	
+	/**
+	 * Return all users tasks with specific label
+	 * 
+	 * @param filter label
+	 * @return tasks
+	 */
 	public List<Task> getTasks(String label){
 		List<Task> result = null;
 		Query q = pm.newQuery(TASKS_QUERY);
 		
 		
 		if(label == null){
-			q.setFilter("ownerId == '" + SecurityHelper.getUser().getUserId() + "'");
+			q.setFilter("ownerId == '" + userId + "'");
 		}else{
-			q.setFilter("ownerId == '" + SecurityHelper.getUser().getUserId() + "' && labels == '" + label + "'");
+			q.setFilter("ownerId == '" + userId + "' && labels == '" + label + "'");
 		}
 		
 		result = (List<Task>) q.execute();
 		return result;
 	}
 	
+	
+	/**
+	 * Add new task with labels
+	 * @param name Name of task
+	 * @param labels Labels (string separated by commas)
+	 */
 	public void addTaskWithLabels(String name, String labels){
 		Set<String> labelsSet = null;
 		
@@ -65,15 +96,18 @@ public class TaskRepository {
 		
 		addTask(name, labelsSet);
 	}
+		
 	
-	public void addTask(String name){
-		addTask(name, null);
-	}
-	
+	/**
+	 * Add new task with set of labels
+	 * 
+	 * @param name Name of task
+	 * @param labels Set of labels
+	 */
 	public void addTask(String name, Set<String> labels){
 		Task task = new Task();
 		
-		task.setOwnerId(SecurityHelper.getUser().getUserId());
+		task.setOwnerId(userId);
 		task.setName(name);
 		task.setState(false);
 		
@@ -84,6 +118,13 @@ public class TaskRepository {
 		pm.makePersistent(task);
 	}
 	
+	
+	/**
+	 * Return task by specific Id OR null
+	 * 
+	 * @param id Id of task
+	 * @return task
+	 */
 	public Task getTaskById(Long id){
 		Task result;
 		try{
@@ -94,6 +135,13 @@ public class TaskRepository {
 		return result;
 	}
 	
+	
+	/**
+	 * Change state of task given by Id
+	 * 
+	 * @param id Id of task
+	 * @return new state of task
+	 */
 	public boolean checkTask(Long id){
 		Task task = getTaskById(id);
 		if(task == null){
@@ -108,12 +156,19 @@ public class TaskRepository {
 		return newState;
 	}
 	
+	
+	/**
+	 * Delete task by id
+	 * 
+	 * @param id Id of task
+	 * @return 
+	 */
 	public boolean deleteTaskById(Long id){
 		Task task = getTaskById(id);
 		
 		if(task != null){
 			
-			if(!task.getOwnerId().equals(SecurityHelper.getUser().getUserId())){
+			if(!task.getOwnerId().equals(userId)){
 				throw new SecurityException("You can not delete this task");
 			}
 			
@@ -125,6 +180,10 @@ public class TaskRepository {
 		}
 	}
 	
+	
+	/**
+	 * Close
+	 */
 	public void close(){
 		if(pm != null) pm.close();
 	}

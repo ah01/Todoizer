@@ -34,11 +34,11 @@ public class Task {
     @Persistent
     private Set<String> labels;
     
+    // --- Getters and Setters ---
+    
     public Long getId() {
 		return id;
 	}
-    
-    // --- Getters and Setters ---
     
 	public void setId(Long id) {
 		this.id = id;
