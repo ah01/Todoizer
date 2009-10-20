@@ -20,6 +20,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>Todoizer</title>
         
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="/static/style/main.css" type="text/css">
         
     </head>
@@ -27,10 +28,15 @@
         
         <div id="frame">
         
-            <h1>Todoizer</h1>
-    
-            <p>Jednoduchý todo list.</p>
-
+            <div id="login">
+                <a href="<%= SecurityHelper.getLoginLink() %>">Přihlásit</a>
+            </div>
+            
+            <div id="header">
+               <h1>Todoizer<sup>&beta;</sup></h1>
+               <em>jenoduchý todo list</em>
+            </div>
+            
             <p>Pro použití se musíte <a href="<%= SecurityHelper.getLoginLink() %>">přihlásit</a></p>
             
         </div>

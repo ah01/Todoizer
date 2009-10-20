@@ -24,6 +24,10 @@ public class SecurityHelper {
 		return UserServiceFactory.getUserService().createLoginURL("/list/");
 	}
 	
+	public static String getUserName(){
+		return getUser().getEmail();
+	}
+	
 	/**
 	 * Return logged user OR throw exception
 	 * 

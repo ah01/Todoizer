@@ -1,19 +1,19 @@
-<!-- Indices written at Mon, 19 Oct 2009 20:34:32 UTC -->
+<!-- Indices written at Tue, 20 Oct 2009 00:42:41 UTC -->
 
 <datastore-indexes>
 
-    <!-- Used 9 times in query history -->
+    <!-- Used 17 times in query history -->
     <datastore-index kind="Task" ancestor="false" source="auto">
-        <property name="labels" direction="asc"/>
         <property name="ownerId" direction="asc"/>
         <property name="name" direction="asc"/>
+        <property name="labels" direction="asc"/>
     </datastore-index>
 
-    <!-- Used 7 times in query history -->
+    <!-- Used 5 times in query history -->
     <datastore-index kind="Task" ancestor="false" source="auto">
+        <property name="labels" direction="asc"/>
         <property name="ownerId" direction="asc"/>
         <property name="name" direction="asc"/>
-        <property name="labels" direction="asc"/>
     </datastore-index>
 
 </datastore-indexes>
