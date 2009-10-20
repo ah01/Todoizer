@@ -94,6 +94,20 @@ public class TaskRepository {
 		return result;
 	}
 	
+	public boolean checkTask(Long id){
+		Task task = getTaskById(id);
+		if(task == null){
+			throw new JDOObjectNotFoundException("Task not found");
+		}
+		
+		boolean newState = ! task.getState();
+		
+		task.setState(newState);
+		pm.close();
+		
+		return newState;
+	}
+	
 	public boolean deleteTaskById(Long id){
 		Task task = getTaskById(id);
 		

@@ -16,6 +16,9 @@
         
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="/static/style/main.css" type="text/css">
+        
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/main.js"></script>
     </head>
     <body>
         
@@ -69,7 +72,7 @@
 		        <% }else{ %>
 		           <% for(Task task : tasks.getTasks()){ %>
 		                <div class="task">
-		                    <input type="checkbox" id="task<%= task.getId() %>"></iput>
+		                    <input type="checkbox" id="task<%= task.getId() %>" <% if(task.getState()){ %>checked="checked"<% } %>></iput>
 		                    <% if(task.getLabels() != null) { %>
 	                            <span class="labels">
 		                           <% for(String label : task.getLabels()){ if(label.equals(tasks.getFilter())) continue; %>
