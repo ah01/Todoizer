@@ -32,6 +32,6 @@ public class TaskSaver extends HttpServlet {
 			}
 		}
 		
-		resp.sendRedirect("/list");
+		resp.sendRedirect("/list/");
 	}
 }

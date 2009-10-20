@@ -17,7 +17,7 @@ public class TaskDeleter extends HttpServlet {
 		
 		if(id != null){
 		
-			Long idd = Long.parseLong(id);
+			Long idd = Long.parseLong(id); //TODO: uncatch exception
 			
 			TaskRepository repository = new TaskRepository();
 			repository.deleteTaskById(idd);
@@ -25,6 +25,6 @@ public class TaskDeleter extends HttpServlet {
 			
 		}
 		
-		resp.sendRedirect("/list");
+		resp.sendRedirect("/list/");
 	}
 }

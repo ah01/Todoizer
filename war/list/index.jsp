@@ -3,24 +3,23 @@
 <%@ page import="cz.horcica.todoizer.SecurityHelper" %>
 <%@ page import="cz.horcica.todoizer.data.Task" %>
 
-<jsp:useBean id="tasks" class="cz.horcica.todoizer.web.TasksListBean" scope="page">
-    <jsp:setProperty name="tasks" property="*" />
-</jsp:useBean>
+<jsp:useBean id="tasks" class="cz.horcica.todoizer.web.TasksListBean" scope="page" />
+
+<%-- bind filter GET param. --%>
+<jsp:setProperty name="tasks" property="*" />
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>    
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Todoizer</title>
+        <title>Todoizer - <%= SecurityHelper.getUserName() %></title>
         
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="/static/style/main.css" type="text/css">
-        
     </head>
     <body>
         
         <div id="frame">
-        
 	        
 	        <div id="login">
 	            <strong><%= SecurityHelper.getUserName() %></strong> | <a href="/help.html">Nápoděda</a> | <a href="<%= SecurityHelper.getLogoutLink() %>">Odhlásit</a>
@@ -90,7 +89,7 @@
 	           
 	        </div>
         
-        </div
+        </div>
 
     </body>
 </html>

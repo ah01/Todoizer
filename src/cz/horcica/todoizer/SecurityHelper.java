@@ -4,6 +4,11 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
+/**
+ * Helper class for security information
+ * 
+ * @author Adam Horcica
+ */
 public class SecurityHelper {
 	
 	/**
@@ -24,6 +29,11 @@ public class SecurityHelper {
 		return UserServiceFactory.getUserService().createLoginURL("/list/");
 	}
 	
+	/**
+	 * Return user identificator name on web page
+	 * 
+	 * @return name
+	 */
 	public static String getUserName(){
 		return getUser().getEmail();
 	}
@@ -44,4 +54,5 @@ public class SecurityHelper {
 		
 		return user;
 	}
+	
 }

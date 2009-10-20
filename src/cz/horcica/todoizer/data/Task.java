@@ -11,7 +11,7 @@ import javax.jdo.annotations.PrimaryKey;
 /**
  * Task DTO
  * 
- * @author Adam Hořčica
+ * @author Adam Horcica
  */
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class Task {

@@ -1,6 +1,5 @@
 package cz.horcica.todoizer.logic;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -8,13 +7,17 @@ import java.util.TreeSet;
 
 import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
-import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
 import cz.horcica.todoizer.SecurityHelper;
 import cz.horcica.todoizer.data.PMF;
 import cz.horcica.todoizer.data.Task;
 
+/**
+ * 
+ * 
+ * @author Adam Horcica
+ */
 public class TaskRepository {
 	
 	private final String TASKS_QUERY = "select from " + Task.class.getName() + "  order by name, labels";
@@ -111,4 +114,5 @@ public class TaskRepository {
 	public void close(){
 		if(pm != null) pm.close();
 	}
+	
 }
