@@ -1,11 +1,19 @@
 package cz.horcica.todoizer.web;
 
 import java.util.List;
+import java.util.logging.Logger;
 
+import com.google.appengine.api.users.User;
+
+import cz.horcica.todoizer.SecurityHelper;
 import cz.horcica.todoizer.data.Task;
 import cz.horcica.todoizer.logic.TaskRepository;
+import cz.horcica.todoizer.logic.UserAccountRepository;
 
 public class TasksListBean {
+	
+	private static final Logger log = Logger.getLogger(TaskRepository.class.getName());
+
 	
 	private TaskRepository repository;
 	private List<Task> tasks = null;
@@ -15,6 +23,24 @@ public class TasksListBean {
 	
 	public TasksListBean() {
 		repository = new TaskRepository();
+		isThisNewUser();
+	}
+
+
+	private void isThisNewUser() {
+		User user = SecurityHelper.getUser();
+		
+		UserAccountRepository userRepository = new UserAccountRepository();
+		if(!userRepository.existsUser(user.getUserId())){
+			log.info("New user " + SecurityHelper.getUser().getEmail());
+			
+			// Add user
+			userRepository.addUser(user);
+			
+			// Add default tasks
+			repository.addTaskWithLabels("Přečíst nápovědu", "todoizer");
+			//repository.addTaskWithLabels("Poslat děkovný dopis autorovi aplikace", "todoizer");
+		}
 	}
 	
 	

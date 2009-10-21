@@ -76,7 +76,7 @@
 		                    <% if(task.getLabels() != null) { %>
 	                            <span class="labels">
 		                           <% for(String label : task.getLabels()){ if(label.equals(tasks.getFilter())) continue; %>
-		                           <a href="?filter=<%= label %>"><%= label %></a>
+		                              <a href="?filter=<%= label %>"><%= label %></a>
 		                           <% } %>
 		                       </span>
 	                        <% } %>

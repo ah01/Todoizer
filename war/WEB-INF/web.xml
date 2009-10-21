@@ -4,7 +4,9 @@ xmlns="http://java.sun.com/xml/ns/javaee"
 xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-
+    
+    <!-- WEB -->
+    
 	<servlet>
 		<servlet-name>TaskSaver</servlet-name>
 		<servlet-class>cz.horcica.todoizer.web.TaskSaver</servlet-class>
@@ -29,6 +31,17 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
         <servlet-name>TaskMarker</servlet-name>
         <url-pattern>/list/mark</url-pattern>
+    </servlet-mapping>
+	
+	<!-- XMPP -->
+	
+	<servlet>
+        <servlet-name>XMPPServiceServlet</servlet-name>
+        <servlet-class>cz.horcica.todoizer.services.XMPPServiceServlet</servlet-class>
+    </servlet> 
+    <servlet-mapping>
+        <servlet-name>XMPPServiceServlet</servlet-name>
+        <url-pattern>/_ah/xmpp/message/chat/</url-pattern>
     </servlet-mapping>
 	
 	
