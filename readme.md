@@ -1,6 +1,8 @@
 # Todoizer
 
-Todoizer je jednoduchý online todo list. Byl vytvoøen jako øe¹ení *øíjnové úlohy Online dílny GUG.CZ: Todo list na Google App Engine*
+(http://github.com/ah01/Todoizer/raw/master/war/static/style/todo.png)
 
-Aplikace je napsaná v Jave (Servlets, JSP, JDO) pro platformu Google App Engine. Z API App Engine pou¾ívá práci s XMPP a pøíjem E-Mailù.
+Todoizer je jednoduchÃ½ online todo list. Byl vytvoÅ™en jako Å™eÅ¡enÃ­ *Å™Ã­jnovÃ© Ãºlohy Online dÃ­lny GUG.CZ: Todo list na Google App Engine*
+
+Aplikace je napsanÃ¡ v Jave (Servlets, JSP, JDO) pro platformu Google App Engine.
  
