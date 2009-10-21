@@ -8,6 +8,7 @@ import java.util.Properties;
 import javax.mail.Address;
 import javax.mail.MessagingException;
 import javax.mail.Session; 
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage; 
 import javax.servlet.http.*;
 
@@ -39,7 +40,8 @@ public class MailServiceServlet extends HttpServlet  {
 			 if(froms.length < 1){
 				 return;
 			 }
-			 from = froms[0].toString();
+			 InternetAddress address = new InternetAddress(froms[0].toString());
+			 from = address.getAddress();
 			 
 			 subject = removeReAndFwd(message.getSubject());
 			 
@@ -57,8 +59,12 @@ public class MailServiceServlet extends HttpServlet  {
 			log.warning("Message from unknown user " + from);
 		}else{
 			TaskRepository repository = new TaskRepository( user.getId() );
-			repository.addTask(subject, null);
-			repository.close();
+			try{
+				repository.addTask(subject, null);
+				log.info("New task from " + from + " : " + subject);
+			}finally{
+				repository.close();
+			}
 		}
 	}
 	

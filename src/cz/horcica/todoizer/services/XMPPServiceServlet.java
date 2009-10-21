@@ -86,9 +86,9 @@ public class XMPPServiceServlet extends HttpServlet  {
 		sb.append("Váš seznam úkolů:\n");
 		for(Task task : repository.getTasks()){
 			if(task.getState()){
-				sb.append(" ok ");
+				sb.append(" [x] - ");
 			}else{
-				sb.append(" -- ");
+				sb.append(" [ ] - ");
 			}
 			
 			if(task.getLabels() != null && !task.getLabels().isEmpty()){

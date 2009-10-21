@@ -42,5 +42,7 @@
             </div>
         </div>
 
+        <%@ include file="parts/ga.html" %>
+
     </body>
 </html>

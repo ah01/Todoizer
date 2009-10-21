@@ -41,8 +41,8 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<!-- WEB -->
     
     <servlet>
-        <servlet-name>TaskSaver</servlet-name>
-        <servlet-class>cz.horcica.todoizer.web.TaskSaver</servlet-class>
+        <servlet-name>TaskCreater</servlet-name>
+        <servlet-class>cz.horcica.todoizer.web.TaskCreater</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>TaskDeleter</servlet-name>
@@ -54,7 +54,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     </servlet>
     
     <servlet-mapping>
-        <servlet-name>TaskSaver</servlet-name>
+        <servlet-name>TaskCreater</servlet-name>
         <url-pattern>/list/save</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
