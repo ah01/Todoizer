@@ -9,6 +9,14 @@ body{
     color: #414143;
 }
 
+/* --- global --- */
+
+a img{
+    border: none;
+}
+
+/* --- layout --- */
+
 #frame{
 	position: relative;
     margin: 0px auto;
@@ -60,19 +68,45 @@ body{
         color: #897668;
         font-style: normal;
     }
-    
-#filter{
-    position: absolute;
-    top: 50px;
-    right: 20px;	
+        
+#help{
+	font-size: 90%;
+	padding: 10px 20px;
+	line-height: 140%;
+	border-top: solid #dcdcdc 1px;
+    }
+    #help h2{
+        font-size: 140%;
+    }
+    #help p,
+    #help ul,
+    #help h3{
+        margin: 10px 30px;
     }
     
-    #filter label{
-        font-size: 80%;
-        font-weight: bold;
+    #help h3{
+        font-size: 105%;
+        margin-top: 20px;
         color: #675C54;
     }
     
+    #help ul{
+        margin-left:0; 
+    }
+    #help li{
+        margin-left: 20px;
+    }
+    
+    #help code{
+        font-size: 110%;
+        font-family: Consolas, 'Lucida Console', 'Monaco CE', fixed, monospace;
+        background-color: #ECE9E7;
+        padding: 0 2px;
+    }
+    #help strong{
+        color: #675C54;
+    }
+        
 #footer{
 	margin: 10px auto;
     font-size: 80%;
@@ -81,6 +115,20 @@ body{
     _width: 750px;
     text-align: right;	
 }
+
+/* --- tasks page --- */
+
+#filter{
+    position: absolute;
+    top: 50px;
+    right: 20px;    
+    }
+    
+    #filter label{
+        font-size: 80%;
+        font-weight: bold;
+        color: #675C54;
+    }
 
 #new-task{
     border-top: solid #dcdcdc 1px;

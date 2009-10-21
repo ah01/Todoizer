@@ -29,16 +29,17 @@
         <div id="frame">
         
             <div id="login">
-                <a href="<%= SecurityHelper.getLoginLink() %>">Přihlásit</a>
+                <a href="/help.jsp">Nápoděda</a> | <a href="<%= SecurityHelper.getLoginLink() %>">Přihlásit</a>
             </div>
             
-            <div id="header">
-               <h1>Todoizer<sup>&beta;</sup></h1>
-               <em>jenoduchý todo list</em>
+            <%@ include file="parts/header.html" %>
+            
+            <div id="help">
+                <h2>Jednoduchý on-line úkolovník</h2>
+            
+                <p>Pro použití se musíte <a href="<%= SecurityHelper.getLoginLink() %>">přihlásit</a></p>
+            
             </div>
-            
-            <p>Pro použití se musíte <a href="<%= SecurityHelper.getLoginLink() %>">přihlásit</a></p>
-            
         </div>
 
     </body>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 
 <%@ page import="cz.horcica.todoizer.SecurityHelper" %>
+<%@ page import="cz.horcica.todoizer.HTML" %>
 <%@ page import="cz.horcica.todoizer.data.Task" %>
 
 <jsp:useBean id="tasks" class="cz.horcica.todoizer.web.TasksListBean" scope="page" />
@@ -25,18 +26,15 @@
         <div id="frame">
 	        
 	        <div id="login">
-	            <strong><%= SecurityHelper.getUserName() %></strong> | <a href="/help.html">Nápoděda</a> | <a href="<%= SecurityHelper.getLogoutLink() %>">Odhlásit</a>
+	            <strong><%= SecurityHelper.getUserName() %></strong> | <a href="/help.jsp">Nápoděda</a> | <a href="<%= SecurityHelper.getLogoutLink() %>">Odhlásit</a>
 	        </div>
             
-            <div id="header">
-	           <h1>Todoizer<sup>&beta;</sup></h1>
-	           <em>jenoduchý todo list</em>
-            </div>
+            <%@ include file="../parts/header.html" %>
 	        
 	        <div id="filter">
 	           <form method="get">
 	               <label>Filtr:</label>
-	               <input type="text" size="10" name="filter" value="${tasks.filter}"></input>
+	               <input type="text" size="10" name="filter" value="<%= HTML.strip(tasks.getFilter()) %>"></input>
 	               <input type="submit" value="ok"></input>
 	           </form>
 	        </div>
@@ -57,14 +55,14 @@
             
 	            <% if(tasks.isFiltered()){ %>
 	               <div class="filtered">
-	                   Je použit filter pro štítek „<strong><%= tasks.getFilter() %></strong>“ – <a href=".">zrušit filtr</a>
+	                   Je použit filter pro štítek „<strong><%= HTML.strip(tasks.getFilter()) %></strong>“ – <a href=".">zrušit filtr</a>
 	               </div>
 	            <% } %>
 		        
 		        <% if(tasks.isEmpty()){ %>
 		           <div class="info">
 		               <% if(tasks.isFiltered()){ %>
-		                  Žádný úkol neobsahuje štítek „<strong><%= tasks.getFilter() %></strong>“.
+		                  Žádný úkol neobsahuje štítek „<strong><%= HTML.strip(tasks.getFilter()) %></strong>“.
 		               <% }else{ %>
 		                  Nemáte žádné úkoly.
 		               <% } %>
@@ -76,12 +74,12 @@
 		                    <% if(task.getLabels() != null) { %>
 	                            <span class="labels">
 		                           <% for(String label : task.getLabels()){ if(label.equals(tasks.getFilter())) continue; %>
-		                              <a href="?filter=<%= label %>"><%= label %></a>
+		                              <a href="?filter=<%= HTML.strip(label) %>"><%=  HTML.strip(label) %></a>
 		                           <% } %>
 		                       </span>
 	                        <% } %>
 			                <label for="task<%= task.getId() %>">
-			                    <%= task.getName() %>
+			                    <%= HTML.strip(task.getName()) %>
 		                    </label>
 		                    <span class="tools">
 		                        <a href="/list/delete?id=<%= task.getId() %>" titl="smazat">&times;</a>

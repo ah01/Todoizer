@@ -57,6 +57,7 @@ public class TaskRepository {
 	 * @param filter label
 	 * @return tasks
 	 */
+	@SuppressWarnings("unchecked")
 	public List<Task> getTasks(String label){
 		List<Task> result = null;
 		Query q = pm.newQuery(TASKS_QUERY);
@@ -149,10 +150,8 @@ public class TaskRepository {
 		}
 		
 		boolean newState = ! task.getState();
-		
 		task.setState(newState);
-		pm.close();
-		
+
 		return newState;
 	}
 	

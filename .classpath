@@ -3,5 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="H:/pracovni/dev/app-engine/Todoizer/war/WEB-INF/lib/jtidy-r918.jar"/>
+	<classpathentry kind="lib" path="H:/pracovni/dev/app-engine/Todoizer/war/WEB-INF/lib/jtidyservlet-r8-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

@@ -5,34 +5,7 @@ xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     
-    <!-- WEB -->
     
-	<servlet>
-		<servlet-name>TaskSaver</servlet-name>
-		<servlet-class>cz.horcica.todoizer.web.TaskSaver</servlet-class>
-	</servlet>
-    <servlet>
-        <servlet-name>TaskDeleter</servlet-name>
-        <servlet-class>cz.horcica.todoizer.web.TaskDeleter</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>TaskMarker</servlet-name>
-        <servlet-class>cz.horcica.todoizer.web.TaskMarker</servlet-class>
-    </servlet>
-    
-	<servlet-mapping>
-        <servlet-name>TaskSaver</servlet-name>
-        <url-pattern>/list/save</url-pattern>
-    </servlet-mapping>
-	<servlet-mapping>
-        <servlet-name>TaskDeleter</servlet-name>
-        <url-pattern>/list/delete</url-pattern>
-    </servlet-mapping>
-	<servlet-mapping>
-        <servlet-name>TaskMarker</servlet-name>
-        <url-pattern>/list/mark</url-pattern>
-    </servlet-mapping>
-	
 	<!-- XMPP -->
 	
 	<servlet>
@@ -44,6 +17,54 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
         <url-pattern>/_ah/xmpp/message/chat/</url-pattern>
     </servlet-mapping>
 	
+	
+	<!-- E-Mail  -->
+	
+	<servlet>
+	  <servlet-name>MailServiceServlet</servlet-name>
+	  <servlet-class>cz.horcica.todoizer.services.MailServiceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>MailServiceServlet</servlet-name>
+	  <url-pattern>/_ah/mail/*</url-pattern>
+	</servlet-mapping>
+	<security-constraint>
+	  <web-resource-collection>
+	    <url-pattern>/_ah/mail/*</url-pattern>
+	  </web-resource-collection>
+	  <auth-constraint>
+	    <role-name>admin</role-name>
+	  </auth-constraint>
+	</security-constraint>
+	
+	
+	<!-- WEB -->
+    
+    <servlet>
+        <servlet-name>TaskSaver</servlet-name>
+        <servlet-class>cz.horcica.todoizer.web.TaskSaver</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TaskDeleter</servlet-name>
+        <servlet-class>cz.horcica.todoizer.web.TaskDeleter</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TaskMarker</servlet-name>
+        <servlet-class>cz.horcica.todoizer.web.TaskMarker</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>TaskSaver</servlet-name>
+        <url-pattern>/list/save</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TaskDeleter</servlet-name>
+        <url-pattern>/list/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TaskMarker</servlet-name>
+        <url-pattern>/list/mark</url-pattern>
+    </servlet-mapping>
 	
     <security-constraint>
         <web-resource-collection>

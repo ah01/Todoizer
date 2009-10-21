@@ -10,11 +10,15 @@ import cz.horcica.todoizer.data.Task;
 import cz.horcica.todoizer.logic.TaskRepository;
 import cz.horcica.todoizer.logic.UserAccountRepository;
 
+/**
+ * Logic for list/index.jsp page
+ * 
+ * @author Adam Horcica
+ */
 public class TasksListBean {
 	
 	private static final Logger log = Logger.getLogger(TaskRepository.class.getName());
 
-	
 	private TaskRepository repository;
 	private List<Task> tasks = null;
 	
@@ -26,7 +30,10 @@ public class TasksListBean {
 		isThisNewUser();
 	}
 
-
+	
+	/**
+	 * Check if this user id NEW (create default task)
+	 */
 	private void isThisNewUser() {
 		User user = SecurityHelper.getUser();
 		
